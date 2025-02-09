@@ -13,7 +13,7 @@ export const accountInfoBody = t.Object({
     balance: t.String(),
 })
 
-type AccountInfo = typeof accountInfoBody.static
+export type AccountInfo = typeof accountInfoBody.static
 
 function checkAccountInfo(info: AccountInfo): string {
     if (!isValidSuiAddress(info.account)) {
@@ -31,7 +31,7 @@ function checkAccountInfo(info: AccountInfo): string {
 export const accountInfosBody = t.Array(
     accountInfoBody
 )
-type AccountInfos = typeof accountInfosBody.static
+export type AccountInfos = typeof accountInfosBody.static
 function checkAccountInfos(data: AccountInfos): string {
     for (let i = 0; i < data.length; i++) {
         let checkRes = checkAccountInfo(data[i])
